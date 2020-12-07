@@ -103,9 +103,14 @@ class DAOplinko(IconScoreBase):
         r_number = (int.from_bytes(sha3_256(seed.encode()), "big") % 42) / 1
         return int(r_number)
 
-    def _determinte_side_bet_win(self, landing_bucket, side_bet_amount, side_bet_bucket) -> int:
+    def _determinte_side_bet_win(self, b_setup: int, landing_bucket: int, side_bet_amount: int, side_bet_bucket: int) -> int:
         if landing_bucket == side_bet_bucket:
-            return int(side_bet_amount * float(SIDE_BET_MULTIPLIERS[landing_bucket]))
+             if b_setup == 1:
+                return int(side_bet_amount * float(SIDE_BET_MULTIPLIERS[0][landing_bucket]))
+             elif b_setup == 2:
+                 return int(side_bet_amount * float(SIDE_BET_MULTIPLIERS[1][landing_bucket]))
+             elif b_setup == 3:
+                 return int(side_bet_amount * float(SIDE_BET_MULTIPLIERS[2][landing_bucket]))
         else:
             return 0
 
@@ -227,7 +232,7 @@ class DAOplinko(IconScoreBase):
 
             # determine side bet payout
             if side_bet_set:
-                side_bet_payout = self._determinte_side_bet_win(landing_bucket, side_bet_amount, side_bet_bucket)
+                side_bet_payout = self._determinte_side_bet_win(b_setup, landing_bucket, side_bet_amount, side_bet_bucket)
                 if side_bet_payout > 0:
                     self.SideBetResult("WIN", landing_bucket)
                     payout = side_bet_payout
