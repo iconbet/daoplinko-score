@@ -244,17 +244,17 @@ class DAOplinko(IconScoreBase):
             revert("Game is currently off")
 
     def _take_wager_and_payout(self, bet_amount: int, payout_amount: int) -> None:
-        self.FundTransfer(self._iconBetDB.iconbet_score.get(), self.msg.value, "Sending icx to Roulette")
+        self.FundTransfer(self._iconBetDB.iconbet_score.get(), bet_amount, "Sending icx to Roulette")
         # send wager to iconbet
-        self.icx.transfer(self._iconBetDB.iconbet_score.get(), self.msg.value)
+        self.icx.transfer(self._iconBetDB.iconbet_score.get(), bet_amount)
         self._roulette_score.take_wager(bet_amount)
         # send payout request to iconbet
         self._roulette_score.wager_payout(payout_amount)
 
     def _take_wager(self, bet_amount: int) -> None:
         # send wager to iconbet
-        self.FundTransfer(self.tx.origin, self.msg.value, "Sending icx to Roulette")
-        self.icx.transfer(self._iconBetDB.iconbet_score.get(), self.msg.value)
+        self.FundTransfer(self.tx.origin, bet_amount, "Sending icx to Roulette")
+        self.icx.transfer(self._iconBetDB.iconbet_score.get(), bet_amount)
         self._roulette_score.take_wager(bet_amount)
 
     # ================================================
