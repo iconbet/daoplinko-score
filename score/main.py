@@ -162,7 +162,7 @@ class DAOplinko(IconScoreBase):
 
             # BET 10
             # PRIZE		    10	50	0	0	50	10
-            # PROBABILITY	11	2	8	9	2	11   / 42 * 100
+            # PROBABILITY	11	2	8	9	2	11   / 43 * 100
             elif b_setup == 2:
                 if 0 <= rand <= 10:
                     self.LandingBucketResult(0, rand)
@@ -194,7 +194,7 @@ class DAOplinko(IconScoreBase):
                     landing_bucket = 5
             # BET 10
             # PRIZE		    15	35	4	5	20	13
-            # PROBABILITY	8	1	12	11	3	8   / 42 * 100
+            # PROBABILITY	8	1	12	11	3	8   / 43 * 100
             elif b_setup == 3:
                 if 0 <= rand <= 7:
                     self.LandingBucketResult(0, rand)
