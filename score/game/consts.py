@@ -1,0 +1,26 @@
+# ================================================
+#  Consts
+# ================================================
+
+# SETS THE MIN BET ALLOWED (0.1 ICX)
+BET_MIN = 1000000000000000000
+# SETS THE MAX BET ALLOWED (100 ICX)
+MAX_BET = 100000000000000000000
+# SETS THE MAX BET ALLOWED FOR SIDE BET (25)
+MAX_SET_BET = 25000000000000000000
+
+# LANDING BUCKET MULTIPLIERS OF ALL STARTING POSITIONS
+MULTIPLIERS = [[2.5, 0.5, 5, 0, 1.5, 1],
+               [1, 5, 0, 0, 5, 1],
+               [1.5, 3.5, 0.6, 0.5, 2, 1.3]]
+
+# SIDEBET MULTIPLIERS PER BOARD CONFIGURATION
+SIDE_BET_MULTIPLIERS = [[10.2125, 4.085, 40.85, 4.085, 5.10625, 4.085],
+                        [3.7136, 20.425, 5.106, 4.538, 20.425, 3.7136],
+                        [5.106, 40.85, 3.404, 3.7136, 13.616, 5.106]]
+
+# RETURNS THE ODDS TO LAND IN EACH BUCKET OUT OF 43  N/43*100
+# PER BOARD CONFIGURATION
+BUCKET_ODDS = [[4, 10, 1, 10, 8, 10],
+               [11, 2, 8, 9, 2, 11],
+               [8, 1, 12, 11, 3, 8]]
