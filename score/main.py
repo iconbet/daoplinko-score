@@ -166,12 +166,12 @@ class DAOplinko(IconScoreBase):
             elif b_setup == 2:
                 if 0 <= rand <= 10:
                     self.LandingBucketResult(0, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[1][0]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[1][0])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 0
                 elif 11 <= rand <= 12:
                     self.LandingBucketResult(1, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[1][1]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[1][1])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 1
                 elif 13 <= rand <= 20:
@@ -184,12 +184,12 @@ class DAOplinko(IconScoreBase):
                     landing_bucket = 3
                 elif 30 <= rand <= 31:
                     self.LandingBucketResult(4, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[1][4]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[1][4])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 4
                 elif 32 <= rand <= 42:
                     self.LandingBucketResult(5, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[1][5]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[1][5])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 5
             # BET 10
@@ -198,32 +198,32 @@ class DAOplinko(IconScoreBase):
             elif b_setup == 3:
                 if 0 <= rand <= 7:
                     self.LandingBucketResult(0, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[2][0]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][0])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 0
                 elif rand == 8:
                     self.LandingBucketResult(1, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[2][1]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][1])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 1
                 elif 9 <= rand <= 20:
                     self.LandingBucketResult(2, rand)
-                    payout = int(bet_amount * MULTIPLIERS[2][2])
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][2]))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 2
                 elif 21 <= rand <= 31:
                     self.LandingBucketResult(3, rand)
-                    payout = int(bet_amount * MULTIPLIERS[2][3])
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][3]))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 4
                 elif 32 <= rand <= 34:
                     self.LandingBucketResult(4, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[2][4]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][4])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 4
                 elif 35 <= rand <= 42:
                     self.LandingBucketResult(5, rand)
-                    payout = int(bet_amount * (MULTIPLIERS[2][5]))
+                    payout = int(bet_amount * (float(MULTIPLIERS[2][5])))
                     self._take_wager_and_payout(bet_amount, payout)
                     landing_bucket = 5
 
