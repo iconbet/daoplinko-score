@@ -6,7 +6,7 @@ TAG = 'DAOplinko'
 
 
 # ================================================
-# An interface to roulette score
+# An interface to treasury score
 # ================================================
 class TreasuryInterface(InterfaceScore):
     @interface
