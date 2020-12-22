@@ -237,9 +237,9 @@ class DAOplinko(IconScoreBase):
 
     def _send_wager_and_payout(self, bet_amount: int, payout_amount: int) -> None:
         try:
-            self.FundTransfer(self._iconBetDB.iconbet_score.get(), self.msg.value, "Sending icx to Treasury")
+            self.FundTransfer(self._iconBetDB.iconbet_score.get(), bet_amount, "Sending icx to Treasury")
             # send wager to treasury
-            self.icx.transfer(self._iconBetDB.iconbet_score.get(), self.msg.value)
+            self.icx.transfer(self._iconBetDB.iconbet_score.get(), bet_amount)
             self._treasury_score.send_wager(bet_amount)
             # send payout request to treasury
             self._treasury_score.wager_payout(payout_amount)
@@ -249,8 +249,8 @@ class DAOplinko(IconScoreBase):
     def _send_wager(self, bet_amount: int) -> None:
         # send wager to treasury
         try:
-            self.FundTransfer(self.tx.origin, self.msg.value, "Sending icx to Treasury")
-            self.icx.transfer(self._iconBetDB.iconbet_score.get(), self.msg.value)
+            self.FundTransfer(self.tx.origin, bet_amount, "Sending icx to Treasury")
+            self.icx.transfer(self._iconBetDB.iconbet_score.get(), bet_amount)
             self._treasury_score.send_wager(bet_amount)
         except BaseException as e:
             revert('Network problem. Wager not sent. Returning funds.')
