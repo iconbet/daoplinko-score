@@ -345,5 +345,6 @@ class DAOplinko(IconScoreBase):
     def get_bucket_odds(self) -> str:
         return json_dumps(BUCKET_ODDS)
 
-    def fallback(self):
-        pass
+    @payable
+    def fallback(self) -> None:
+        revert("DAOplinko does not accept bare icx transfers")
