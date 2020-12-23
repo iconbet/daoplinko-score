@@ -244,7 +244,7 @@ class DAOplinko(IconScoreBase):
             # send payout request to treasury
             self._treasury_score.wager_payout(payout_amount)
         except BaseException as e:
-            revert(str(e) + str(bet_amount) + str(payout_amount))
+            revert(str(e))
 
     def _send_wager(self, bet_amount: int) -> None:
         # send wager to treasury
@@ -253,7 +253,7 @@ class DAOplinko(IconScoreBase):
             self.FundTransfer(self.tx.origin, bet_amount, "Sending icx to Treasury")
             treasury_score.icx(bet_amount).send_wager(bet_amount)
         except BaseException as e:
-            revert(str(e) + str(bet_amount))
+            revert(str(e))
 
     # ================================================
     #  External methods
