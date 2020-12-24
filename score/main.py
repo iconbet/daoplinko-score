@@ -280,7 +280,10 @@ class DAOplinko(IconScoreBase):
         :type score: :class:`iconservice.base.address.Address`
         """
         if self.msg.sender == self.owner:
-            self._iconBetDB.iconbet_score.set(score)
+            if score.is_contract:
+                self._iconBetDB.iconbet_score.set(score)
+            else:
+                revert("Invalid SCORE address")
 
     @external(readonly=True)
     def get_treasury_score(self) -> Address:
