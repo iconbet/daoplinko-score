@@ -126,7 +126,7 @@ class DAOplinko(IconScoreBase):
                     self.LandingBucketResult(3, rand)
                     self._send_wager(bet_amount)
                     landing_bucket = 3
-                elif 10 <= rand <= 17:
+                elif 23 <= rand <= 32:
                     self.LandingBucketResult(4, rand)
                     payout = (bet_amount * MULTIPLIERS[0][4]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
@@ -141,7 +141,7 @@ class DAOplinko(IconScoreBase):
                     payout = (bet_amount * MULTIPLIERS[0][0]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 0
-                elif 23 <= rand <= 32:
+                elif 10 <= rand <= 17:
                     self.LandingBucketResult(1, rand)
                     payout = (bet_amount * MULTIPLIERS[0][1]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
@@ -195,7 +195,7 @@ class DAOplinko(IconScoreBase):
                     landing_bucket = 0
                 elif rand == 8:
                     self.LandingBucketResult(1, rand)
-                    payout = (bet_amount * MULTIPLIERS[2][1]) / 10
+                    payout = (bet_amount * MULTIPLIERS[2][1]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 1
                 elif 9 <= rand <= 20:
@@ -261,7 +261,7 @@ class DAOplinko(IconScoreBase):
     @payable
     @external
     def bet(self, b_setup: int, side_bet_amount: int = 0, side_bet_bucket: int = 0, user_seed: str = "") -> None:
-        bet_amount = int(self.msg.value)
+        bet_amount = self.msg.value
         self._bet(b_setup, bet_amount, side_bet_amount, side_bet_bucket, user_seed)
 
     @external(readonly=True)
