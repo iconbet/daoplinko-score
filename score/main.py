@@ -121,32 +121,37 @@ class DAOplinko(IconScoreBase):
             # BET 10
             # PRIZE		    25	5	50	0	15	10
             # PROBABILITY	4	10	1	10	8	10   / 43 * 100
-            if b_setup == 1:
-                if 0 <= rand <= 9:
-                    self.LandingBucketResult(3, rand)
-                    self._send_wager(bet_amount)
-                    landing_bucket = 3
-                elif 23 <= rand <= 32:
-                    self.LandingBucketResult(4, rand)
-                    payout = (bet_amount * MULTIPLIERS[0][4]) // 10
-                    self._send_wager_and_payout(bet_amount, payout)
-                    landing_bucket = 4
-                elif rand == 18:
-                    self.LandingBucketResult(2, rand)
-                    payout = (bet_amount * MULTIPLIERS[0][2]) // 10
-                    self._send_wager_and_payout(bet_amount, payout)
-                    landing_bucket = 2
-                elif 19 <= rand <= 22:
-                    self.LandingBucketResult(0, rand)
+                if b_setup == 1:
+                if 0 <= rand <= 3:
+                    self.LandingBucketResult(0, rand) 
                     payout = (bet_amount * MULTIPLIERS[0][0]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 0
-                elif 10 <= rand <= 17:
+
+                if 4 <= rand <= 13:
                     self.LandingBucketResult(1, rand)
                     payout = (bet_amount * MULTIPLIERS[0][1]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 1
-                elif 33 <= rand <= 42:
+                
+                if rand == 14:
+                    self.LandingBucketResult(2, rand)
+                    payout = (bet_amount * MULTIPLIERS[0][2]) // 10
+                    self._send_wager_and_payout(bet_amount, payout)
+                    landing_bucket = 2
+
+                if 15 <= rand <= 24:
+                    self.LandingBucketResult(3, rand)
+                    self._send_wager(bet_amount)
+                    landing_bucket = 3
+                
+                if 25 <= rand <= 32:
+                    self.LandingBucketResult(4, rand)
+                    payout = (bet_amount * MULTIPLIERS[0][4]) // 10
+                    self._send_wager_and_payout(bet_amount, payout)
+                    landing_bucket = 4
+
+                if 33 <= rand <= 42:   
                     self.LandingBucketResult(5, rand)
                     payout = (bet_amount * MULTIPLIERS[0][5]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
