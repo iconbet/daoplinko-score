@@ -151,7 +151,6 @@ class DAOplinko(IconScoreBase):
                     payout = (bet_amount * MULTIPLIERS[0][5]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 5
-
             # BET 10
             # PRIZE		    10	50	0	0	50	10
             # PROBABILITY	11	2	8	9	2	11   / 43 * 100
