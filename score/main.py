@@ -121,7 +121,7 @@ class DAOplinko(IconScoreBase):
             # BET 10
             # PRIZE		    25	5	50	0	15	10
             # PROBABILITY	4	10	1	10	8	10   / 43 * 100
-                if b_setup == 1:
+            if b_setup == 1:
                 if 0 <= rand <= 3:
                     self.LandingBucketResult(0, rand) 
                     payout = (bet_amount * MULTIPLIERS[0][0]) // 10
