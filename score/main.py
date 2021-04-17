@@ -90,6 +90,9 @@ class DAOplinko(IconScoreBase):
                 revert(f'Invalid Side Bet Bucket Selected: Choose between 0-5')
 
     def _get_random(self, user_seed: str) -> int:
+
+        if self.msg.sender.is_contract:
+            revert("ICONbet: SCORE cant play games")
         # generates a random number between 0 - 42
         seed = (str(bytes.hex(self.tx.hash)) + str(self.now()) + user_seed)
         r_number = (int.from_bytes(sha3_256(seed.encode()), "big") % 43) / 1
