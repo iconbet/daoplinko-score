@@ -98,7 +98,8 @@ class DAOplinko(IconScoreBase):
         r_number = (int.from_bytes(sha3_256(seed.encode()), "big") % 43) / 1
         return int(r_number)
 
-    def _determinte_side_bet_win(self, b_setup: int, landing_bucket: int, side_bet_amount: int, side_bet_bucket: int) -> int:
+    def _determinte_side_bet_win(self, b_setup: int, landing_bucket: int, side_bet_amount: int,
+                                 side_bet_bucket: int) -> int:
         if landing_bucket == side_bet_bucket:
             if b_setup == 1:
                 return (side_bet_amount * SIDE_BET_MULTIPLIERS[0][landing_bucket]) // 1000
@@ -126,7 +127,7 @@ class DAOplinko(IconScoreBase):
             # PROBABILITY	4	10	1	10	8	10   / 43 * 100
             if b_setup == 1:
                 if 0 <= rand <= 3:
-                    self.LandingBucketResult(0, rand) 
+                    self.LandingBucketResult(0, rand)
                     payout = (bet_amount * MULTIPLIERS[0][0]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 0
@@ -136,7 +137,7 @@ class DAOplinko(IconScoreBase):
                     payout = (bet_amount * MULTIPLIERS[0][1]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 1
-                
+
                 if rand == 14:
                     self.LandingBucketResult(2, rand)
                     payout = (bet_amount * MULTIPLIERS[0][2]) // 10
@@ -147,14 +148,14 @@ class DAOplinko(IconScoreBase):
                     self.LandingBucketResult(3, rand)
                     self._send_wager(bet_amount)
                     landing_bucket = 3
-                
+
                 if 25 <= rand <= 32:
                     self.LandingBucketResult(4, rand)
                     payout = (bet_amount * MULTIPLIERS[0][4]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
                     landing_bucket = 4
 
-                if 33 <= rand <= 42:   
+                if 33 <= rand <= 42:
                     self.LandingBucketResult(5, rand)
                     payout = (bet_amount * MULTIPLIERS[0][5]) // 10
                     self._send_wager_and_payout(bet_amount, payout)
@@ -231,7 +232,8 @@ class DAOplinko(IconScoreBase):
 
             # determine side bet payout
             if side_bet_set:
-                side_bet_payout = self._determinte_side_bet_win(b_setup, landing_bucket, side_bet_amount, side_bet_bucket)
+                side_bet_payout = self._determinte_side_bet_win(b_setup, landing_bucket, side_bet_amount,
+                                                                side_bet_bucket)
                 if side_bet_payout > 0:
                     self.SideBetResult("WIN", landing_bucket)
                     payout = side_bet_payout
